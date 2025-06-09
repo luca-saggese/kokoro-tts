@@ -21,9 +21,11 @@ COPY ./requirements.txt /app/requirements.txt
 
 RUN pip install -r requirements.txt
 
+RUN apt-get update && apt-get install -y portaudio19-dev
+
 COPY . /app
 
-
+ENV ONNX_PROVIDER=CUDAExecutionProvider
 
 ENV HF_HOME=/huggingface
 
